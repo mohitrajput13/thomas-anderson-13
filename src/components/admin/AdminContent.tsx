@@ -5,7 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Save, FileText, Image, Type, BarChart3, PenTool, Settings as SettingsIcon } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Save, FileText, Image, Type, BarChart3, PenTool, Settings as SettingsIcon, Users, Star, MessageSquare, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface AdminContentProps {
@@ -117,6 +118,241 @@ export function AdminContent({ activeTab }: AdminContentProps) {
     </div>
   );
 
+  const renderHomePageEditor = () => {
+    const homePage = content.find(page => page.id === 'home');
+    if (!homePage) return null;
+
+    const getSectionFields = (prefix: string) => 
+      homePage.fields.filter(field => field.id.startsWith(prefix));
+
+    const getSectionIcon = (section: string) => {
+      switch (section) {
+        case 'hero': return <Image className="w-5 h-5" />;
+        case 'about': return <Users className="w-5 h-5" />;
+        case 'services': return <SettingsIcon className="w-5 h-5" />;
+        case 'stats': return <BarChart3 className="w-5 h-5" />;
+        case 'testimonials': return <MessageSquare className="w-5 h-5" />;
+        case 'footer': return <Phone className="w-5 h-5" />;
+        default: return <FileText className="w-5 h-5" />;
+      }
+    };
+
+    const renderField = (field: any) => (
+      <div key={field.id} className="space-y-2">
+        <label className="text-sm font-medium text-foreground flex items-center gap-2">
+          {getFieldIcon(field.type)}
+          {field.label}
+        </label>
+        {field.type === 'textarea' ? (
+          <Textarea
+            value={field.value}
+            onChange={(e) => handleFieldUpdate('home', field.id, e.target.value)}
+            placeholder={`Enter ${field.label.toLowerCase()}`}
+            className="min-h-24 resize-vertical"
+          />
+        ) : (
+          <Input
+            type={field.type === 'image' ? 'url' : 'text'}
+            value={field.value}
+            onChange={(e) => handleFieldUpdate('home', field.id, e.target.value)}
+            placeholder={
+              field.type === 'image' 
+                ? 'Enter image URL or path' 
+                : `Enter ${field.label.toLowerCase()}`
+            }
+          />
+        )}
+        
+        {field.type === 'image' && field.value && (
+          <div className="mt-2">
+            <p className="text-xs text-muted-foreground mb-1">Preview:</p>
+            <div className="w-full h-16 bg-muted rounded-md flex items-center justify-center overflow-hidden">
+              {field.value.startsWith('http') || field.value.startsWith('/') ? (
+                <img 
+                  src={field.value} 
+                  alt="Preview" 
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.nextElementSibling!.classList.remove('hidden');
+                  }}
+                />
+              ) : null}
+              <div className="hidden text-xs text-muted-foreground">
+                Image preview not available
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-2xl font-bold text-primary">Home Page Editor</h3>
+            <p className="text-muted-foreground">Edit your homepage content organized by sections</p>
+          </div>
+          <Badge variant="secondary">{homePage.fields.length} total fields</Badge>
+        </div>
+
+        <Accordion type="single" collapsible className="space-y-4">
+          <AccordionItem value="hero" className="border border-border rounded-lg">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <div className="flex items-center gap-3">
+                {getSectionIcon('hero')}
+                <div className="text-left">
+                  <h4 className="text-lg font-semibold">Hero Section</h4>
+                  <p className="text-sm text-muted-foreground">Main banner, title, subtitle, and background image</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-6">
+              <div className="grid gap-4 md:grid-cols-2">
+                {getSectionFields('hero').map(renderField)}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="about" className="border border-border rounded-lg">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <div className="flex items-center gap-3">
+                {getSectionIcon('about')}
+                <div className="text-left">
+                  <h4 className="text-lg font-semibold">About Section</h4>
+                  <p className="text-sm text-muted-foreground">About heading, description, and image</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-6">
+              <div className="grid gap-4 md:grid-cols-2">
+                {getSectionFields('about').map(renderField)}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="services" className="border border-border rounded-lg">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <div className="flex items-center gap-3">
+                {getSectionIcon('services')}
+                <div className="text-left">
+                  <h4 className="text-lg font-semibold">Services Section</h4>
+                  <p className="text-sm text-muted-foreground">Service offerings with icons, titles, and descriptions</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-6">
+              <div className="grid gap-4">
+                <div className="mb-4">
+                  {getSectionFields('services').filter(f => f.id === 'services-heading').map(renderField)}
+                </div>
+                <div className="grid gap-6 md:grid-cols-3">
+                  {[1, 2, 3].map(num => (
+                    <div key={num} className="space-y-4 p-4 border border-border rounded-lg">
+                      <h5 className="font-medium text-sm text-muted-foreground">Service {num}</h5>
+                      {getSectionFields(`service${num}`).map(renderField)}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="stats" className="border border-border rounded-lg">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <div className="flex items-center gap-3">
+                {getSectionIcon('stats')}
+                <div className="text-left">
+                  <h4 className="text-lg font-semibold">Statistics Section</h4>
+                  <p className="text-sm text-muted-foreground">Key performance metrics and achievements</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-6">
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {getSectionFields('stats').map(renderField)}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="testimonials" className="border border-border rounded-lg">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <div className="flex items-center gap-3">
+                {getSectionIcon('testimonials')}
+                <div className="text-left">
+                  <h4 className="text-lg font-semibold">Testimonials Section</h4>
+                  <p className="text-sm text-muted-foreground">Customer testimonials with text, author names, and images</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-6">
+              <div className="grid gap-4">
+                <div className="mb-4">
+                  {getSectionFields('testimonials').filter(f => f.id === 'testimonials-heading').map(renderField)}
+                </div>
+                <div className="grid gap-6 md:grid-cols-3">
+                  {[1, 2, 3].map(num => (
+                    <div key={num} className="space-y-4 p-4 border border-border rounded-lg">
+                      <h5 className="font-medium text-sm text-muted-foreground">Testimonial {num}</h5>
+                      {getSectionFields(`testimonial${num}`).map(renderField)}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="footer" className="border border-border rounded-lg">
+            <AccordionTrigger className="px-6 py-4 hover:no-underline">
+              <div className="flex items-center gap-3">
+                {getSectionIcon('footer')}
+                <div className="text-left">
+                  <h4 className="text-lg font-semibold">Footer Section</h4>
+                  <p className="text-sm text-muted-foreground">Contact information, social links, and footer text</p>
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-6 pb-6">
+              <div className="grid gap-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="space-y-4">
+                    <h5 className="font-medium text-sm text-muted-foreground">Contact Information</h5>
+                    {getSectionFields('footer-contact').map(renderField)}
+                  </div>
+                  <div className="space-y-4">
+                    <h5 className="font-medium text-sm text-muted-foreground">Social Media Links</h5>
+                    {getSectionFields('footer-social').map(renderField)}
+                  </div>
+                </div>
+                <div className="pt-4 border-t">
+                  {getSectionFields('footer-text').map(renderField)}
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+
+        <div className="flex gap-4 pt-6 border-t">
+          <Button 
+            onClick={handleSave}
+            className="btn-hero"
+          >
+            <Save className="w-4 h-4 mr-2" />
+            Save Home Page
+          </Button>
+          <Button 
+            variant="outline"
+            onClick={() => window.open('/', '_blank')}
+          >
+            Preview Changes
+          </Button>
+        </div>
+      </div>
+    );
+  };
+
   const renderPages = () => (
     <div className="space-y-6">
       <div>
@@ -135,83 +371,89 @@ export function AdminContent({ activeTab }: AdminContentProps) {
 
         {content.map((page) => (
           <TabsContent key={page.id} value={page.id} className="space-y-6">
-            <div className="flex items-center gap-2 mb-6">
-              <h3 className="text-2xl font-bold text-primary">{page.title}</h3>
-              <Badge variant="secondary">{page.fields.length} fields</Badge>
-            </div>
+            {page.id === 'home' ? (
+              renderHomePageEditor()
+            ) : (
+              <>
+                <div className="flex items-center gap-2 mb-6">
+                  <h3 className="text-2xl font-bold text-primary">{page.title}</h3>
+                  <Badge variant="secondary">{page.fields.length} fields</Badge>
+                </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {page.fields.map((field) => (
-                <Card key={field.id} className="card-elegant">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2 text-lg">
-                      {getFieldIcon(field.type)}
-                      {field.label}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {field.type === 'textarea' ? (
-                      <Textarea
-                        value={field.value}
-                        onChange={(e) => handleFieldUpdate(page.id, field.id, e.target.value)}
-                        placeholder={`Enter ${field.label.toLowerCase()}`}
-                        className="min-h-24 resize-vertical"
-                      />
-                    ) : (
-                      <Input
-                        type={field.type === 'image' ? 'url' : 'text'}
-                        value={field.value}
-                        onChange={(e) => handleFieldUpdate(page.id, field.id, e.target.value)}
-                        placeholder={
-                          field.type === 'image' 
-                            ? 'Enter image URL or path' 
-                            : `Enter ${field.label.toLowerCase()}`
-                        }
-                      />
-                    )}
-                    
-                    {field.type === 'image' && field.value && (
-                      <div className="mt-3">
-                        <p className="text-sm text-muted-foreground mb-2">Preview:</p>
-                        <div className="w-full h-20 bg-muted rounded-md flex items-center justify-center overflow-hidden">
-                          {field.value.startsWith('http') || field.value.startsWith('/') ? (
-                            <img 
-                              src={field.value} 
-                              alt="Preview" 
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                target.nextElementSibling!.classList.remove('hidden');
-                              }}
-                            />
-                          ) : null}
-                          <div className="hidden text-sm text-muted-foreground">
-                            Image preview not available
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {page.fields.map((field) => (
+                    <Card key={field.id} className="card-elegant">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="flex items-center gap-2 text-lg">
+                          {getFieldIcon(field.type)}
+                          {field.label}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        {field.type === 'textarea' ? (
+                          <Textarea
+                            value={field.value}
+                            onChange={(e) => handleFieldUpdate(page.id, field.id, e.target.value)}
+                            placeholder={`Enter ${field.label.toLowerCase()}`}
+                            className="min-h-24 resize-vertical"
+                          />
+                        ) : (
+                          <Input
+                            type={field.type === 'image' ? 'url' : 'text'}
+                            value={field.value}
+                            onChange={(e) => handleFieldUpdate(page.id, field.id, e.target.value)}
+                            placeholder={
+                              field.type === 'image' 
+                                ? 'Enter image URL or path' 
+                                : `Enter ${field.label.toLowerCase()}`
+                            }
+                          />
+                        )}
+                        
+                        {field.type === 'image' && field.value && (
+                          <div className="mt-3">
+                            <p className="text-sm text-muted-foreground mb-2">Preview:</p>
+                            <div className="w-full h-20 bg-muted rounded-md flex items-center justify-center overflow-hidden">
+                              {field.value.startsWith('http') || field.value.startsWith('/') ? (
+                                <img 
+                                  src={field.value} 
+                                  alt="Preview" 
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    target.nextElementSibling!.classList.remove('hidden');
+                                  }}
+                                />
+                              ) : null}
+                              <div className="hidden text-sm text-muted-foreground">
+                                Image preview not available
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
 
-            <div className="flex gap-4 pt-6 border-t">
-              <Button 
-                onClick={handleSave}
-                className="btn-hero"
-              >
-                <Save className="w-4 h-4 mr-2" />
-                Save {page.title}
-              </Button>
-              <Button 
-                variant="outline"
-                onClick={() => window.open('/', '_blank')}
-              >
-                Preview Changes
-              </Button>
-            </div>
+                <div className="flex gap-4 pt-6 border-t">
+                  <Button 
+                    onClick={handleSave}
+                    className="btn-hero"
+                  >
+                    <Save className="w-4 h-4 mr-2" />
+                    Save {page.title}
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    onClick={() => window.open('/', '_blank')}
+                  >
+                    Preview Changes
+                  </Button>
+                </div>
+              </>
+            )}
           </TabsContent>
         ))}
       </Tabs>

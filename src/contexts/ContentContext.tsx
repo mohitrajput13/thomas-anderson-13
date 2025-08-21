@@ -19,17 +19,55 @@ const initialContent: PageContent[] = [
     id: 'home',
     title: 'Home Page',
     fields: [
+      // Hero Section
       { id: 'hero-title', label: 'Hero Title', type: 'text', value: 'Transform Your Athletic Dreams Into College Reality' },
       { id: 'hero-subtitle', label: 'Hero Subtitle', type: 'textarea', value: 'Discover the proven Game 12 system that has helped thousands of student-athletes secure college scholarships and achieve their academic dreams.' },
       { id: 'hero-image', label: 'Hero Background Image', type: 'image', value: '/src/assets/hero-recruiting.jpg' },
+      
+      // About Section
+      { id: 'about-heading', label: 'About Heading', type: 'text', value: 'About Thomas Anderson' },
+      { id: 'about-description', label: 'About Description', type: 'textarea', value: 'With over three decades of experience in college recruiting, I have dedicated my career to helping student-athletes achieve their academic and athletic dreams through proven strategies and personalized guidance.' },
+      { id: 'about-image', label: 'About Image', type: 'image', value: '/src/assets/about-thomas.jpg' },
+      
+      // Services Section
+      { id: 'services-heading', label: 'Services Section Heading', type: 'text', value: 'Our Services' },
+      { id: 'service1-icon', label: 'Service 1 Icon/Image', type: 'image', value: '/src/assets/service-mentorship.jpg' },
+      { id: 'service1-title', label: 'Service 1 Title', type: 'text', value: 'Personal Mentorship' },
+      { id: 'service1-description', label: 'Service 1 Description', type: 'textarea', value: 'One-on-one guidance tailored to your unique athletic and academic goals.' },
+      { id: 'service2-icon', label: 'Service 2 Icon/Image', type: 'image', value: '/src/assets/service-recruiting.jpg' },
+      { id: 'service2-title', label: 'Service 2 Title', type: 'text', value: 'Recruiting Strategy' },
+      { id: 'service2-description', label: 'Service 2 Description', type: 'textarea', value: 'Comprehensive recruiting plans designed to maximize your scholarship opportunities.' },
+      { id: 'service3-icon', label: 'Service 3 Icon/Image', type: 'image', value: '/src/assets/service-game12.jpg' },
+      { id: 'service3-title', label: 'Service 3 Title', type: 'text', value: 'Game 12 System' },
+      { id: 'service3-description', label: 'Service 3 Description', type: 'textarea', value: 'Access to our proven Game 12 methodology that has helped thousands succeed.' },
+      
+      // Stats Section
       { id: 'stats-experience', label: 'Years Experience', type: 'text', value: '31+' },
       { id: 'stats-athletes', label: 'Athletes Guided', type: 'text', value: '5,000+' },
       { id: 'stats-success', label: 'Success Rate', type: 'text', value: '95%' },
       { id: 'stats-scholarships', label: 'Scholarships Earned', type: 'text', value: '$50M+' },
-      { id: 'authority-title', label: 'Authority Section Title', type: 'text', value: 'Why Choose Thomas Anderson?' },
-      { id: 'authority-subtitle', label: 'Authority Section Subtitle', type: 'textarea', value: 'Three decades of proven results, innovative strategies, and personalized guidance that transforms potential into performance.' },
-      { id: 'book-title', label: 'Book Title', type: 'text', value: 'Dream Big, Play Hard' },
-      { id: 'book-description', label: 'Book Description', type: 'textarea', value: 'The definitive guide to college recruiting success, featuring the complete Game 12 system and real-world strategies that have transformed thousands of student-athletes\' futures.' },
+      
+      // Testimonials Section
+      { id: 'testimonials-heading', label: 'Testimonials Heading', type: 'text', value: 'What Our Athletes Say' },
+      { id: 'testimonial1-text', label: 'Testimonial 1 Text', type: 'textarea', value: 'Thomas\'s guidance was instrumental in helping me secure a full scholarship. His expertise and personalized approach made all the difference.' },
+      { id: 'testimonial1-author', label: 'Testimonial 1 Author', type: 'text', value: 'Sarah Johnson' },
+      { id: 'testimonial1-image', label: 'Testimonial 1 Author Image', type: 'image', value: '/src/assets/testimonial1.jpg' },
+      { id: 'testimonial2-text', label: 'Testimonial 2 Text', type: 'textarea', value: 'The Game 12 system opened doors I never knew existed. I\'m now playing at my dream college with a full ride.' },
+      { id: 'testimonial2-author', label: 'Testimonial 2 Author', type: 'text', value: 'Michael Rodriguez' },
+      { id: 'testimonial2-image', label: 'Testimonial 2 Author Image', type: 'image', value: '/src/assets/testimonial2.jpg' },
+      { id: 'testimonial3-text', label: 'Testimonial 3 Text', type: 'textarea', value: 'Professional, knowledgeable, and results-driven. Thomas exceeded all our expectations.' },
+      { id: 'testimonial3-author', label: 'Testimonial 3 Author', type: 'text', value: 'Jennifer Williams' },
+      { id: 'testimonial3-image', label: 'Testimonial 3 Author Image', type: 'image', value: '/src/assets/testimonial3.jpg' },
+      
+      // Footer Section
+      { id: 'footer-contact-phone', label: 'Contact Phone', type: 'text', value: '(555) 123-4567' },
+      { id: 'footer-contact-email', label: 'Contact Email', type: 'text', value: 'thomas@recruitingexpert.com' },
+      { id: 'footer-contact-address', label: 'Contact Address', type: 'textarea', value: '123 Championship Drive\nSuite 456\nSports City, SC 12345' },
+      { id: 'footer-social-facebook', label: 'Facebook URL', type: 'text', value: 'https://facebook.com/thomasandersonrecruiting' },
+      { id: 'footer-social-twitter', label: 'Twitter URL', type: 'text', value: 'https://twitter.com/thomasrecruiting' },
+      { id: 'footer-social-linkedin', label: 'LinkedIn URL', type: 'text', value: 'https://linkedin.com/in/thomasandersonrecruiting' },
+      { id: 'footer-social-instagram', label: 'Instagram URL', type: 'text', value: 'https://instagram.com/thomasrecruiting' },
+      { id: 'footer-text', label: 'Footer Text', type: 'textarea', value: '© 2024 Thomas Anderson Recruiting. All rights reserved. Transforming athletic dreams into college reality.' },
     ]
   },
   {
