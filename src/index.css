@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 150 38% 10%;
+    
+    /* Professional Dark Green Primary (#102822) */
+    --primary: 150 38% 10%; /* Dark green #102822 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 150 38% 20%;
+    
+    /* Gold Accent (#b8860b) */
+    --accent: 43 90% 38%; /* Gold #b8860b */
+    --accent-foreground: 0 0% 100%;
+    --accent-muted: 43 75% 50%;
+    
+    /* Secondary Green Tones */
+    --secondary: 150 15% 95%;
+    --secondary-foreground: 150 38% 10%;
+    
+    /* Professional Grays */
+    --muted: 150 8% 96%;
+    --muted-foreground: 150 15% 45%;
+    
+    /* Card System */
+    --card: 0 0% 100%;
+    --card-foreground: 150 38% 10%;
+    --card-border: 150 15% 90%;
+    
+    /* Interactive Elements */
+    --border: 150 15% 90%;
+    --input: 150 15% 90%;
+    --ring: 150 38% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 38% 10%;
+    
+    /* Status Colors */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 150 50% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Professional Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-muted)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    
+    /* Elegant Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+    --shadow-gold: 0 5px 20px -5px hsl(var(--accent) / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(var(--primary) / 0.1);
+    
+    /* Smooth Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-out;
+    
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark theme for college recruiting site */
+    --background: 150 38% 5%;
+    --foreground: 0 0% 98%;
+    --primary: 43 90% 45%;
+    --primary-foreground: 150 38% 10%;
+    --accent: 150 38% 15%;
+    --accent-foreground: 0 0% 100%;
+    --secondary: 150 30% 12%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 150 20% 8%;
+    --muted-foreground: 150 15% 65%;
+    --card: 150 38% 8%;
+    --card-foreground: 0 0% 98%;
+    --border: 150 30% 15%;
+    --input: 150 30% 15%;
+    --ring: 43 90% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  
+  h1 {
+    @apply text-4xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+}
+
+@layer components {
+  /* Professional Button Variants */
+  .btn-hero {
+    @apply bg-[var(--gradient-hero)] text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg shadow-[var(--shadow-elegant)] hover:scale-105 transition-[var(--transition-smooth)];
+  }
+  
+  .btn-gold {
+    @apply bg-[var(--gradient-gold)] text-accent-foreground px-6 py-3 rounded-lg font-semibold shadow-[var(--shadow-gold)] hover:scale-105 transition-[var(--transition-smooth)];
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-[var(--transition-smooth)];
+  }
+  
+  /* Card Styles */
+  .card-elegant {
+    @apply bg-card border border-card-border rounded-xl p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elegant)] transition-[var(--transition-smooth)];
+  }
+  
+  /* Timeline Styles */
+  .timeline-item {
+    @apply relative pl-8 pb-8 before:absolute before:left-0 before:top-2 before:w-4 before:h-4 before:bg-accent before:rounded-full before:shadow-[var(--shadow-gold)];
+  }
+  
+  .timeline-line {
+    @apply absolute left-2 top-6 w-0.5 h-full bg-gradient-to-b from-accent to-muted;
+  }
+  
+  /* Interactive Hover Effects */
+  .hover-lift {
+    @apply transition-[var(--transition-smooth)] hover:scale-105 hover:shadow-[var(--shadow-elegant)];
+  }
+  
+  .hover-glow {
+    @apply transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-gold)];
+  }
+  
+  /* Authority Stats */
+  .stat-card {
+    @apply text-center p-6 rounded-xl bg-[var(--gradient-subtle)] border border-card-border;
+  }
+  
+  .stat-number {
+    @apply text-4xl font-bold text-accent mb-2;
+  }
+  
+  .stat-label {
+    @apply text-muted-foreground font-medium;
+  }
+}
