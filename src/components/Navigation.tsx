@@ -1,20 +1,23 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Media", href: "/media" },
-    { name: "Book", href: "/book" },
-    { name: "Contact", href: "/contact" },
+    { name: t('nav.learningHub'), href: "/media" },
+    { name: t('nav.aboutThomas'), href: "/about" },
   ];
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'es' : 'en';
+    i18n.changeLanguage(newLang);
+  };
 
   const isActive = (href: string) => {
     if (href === "/" && location.pathname === "/") return true;
@@ -55,7 +58,17 @@ const Navigation = () => {
                 ></span>
               </Link>
             ))}
-            <Button className="btn-gold">Get Started</Button>
+            
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-3 py-1 rounded-lg border border-border hover:bg-muted transition-colors text-sm font-medium"
+            >
+              <Globe className="w-4 h-4" />
+              {i18n.language.toUpperCase()}
+            </button>
+            
+            <Button className="btn-gold">{t('nav.getGuide')}</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -89,7 +102,17 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="btn-gold mx-4 mt-4">Get Started</Button>
+              
+              {/* Mobile Language Toggle */}
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border hover:bg-muted transition-colors text-sm font-medium mx-4"
+              >
+                <Globe className="w-4 h-4" />
+                {i18n.language === 'en' ? 'Español' : 'English'}
+              </button>
+              
+              <Button className="btn-gold mx-4 mt-4">{t('nav.getGuide')}</Button>
             </div>
           </div>
         )}
