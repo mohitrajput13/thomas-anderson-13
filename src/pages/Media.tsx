@@ -3,13 +3,15 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Mic, BookOpen, Video, Calendar } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Media = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Helmet>
-        <title>Media Hub - Recruiting Unplugged Podcast & Educational Content</title>
-        <meta name="description" content="Access Thomas Anderson's media content including Recruiting Unplugged podcast, Off the Record blog, speaking engagements, and video training series." />
+        <title>{t('media.hero.title')} | Thomas Anderson</title>
+        <meta name="description" content={t('media.hero.subtitle')} />
       </Helmet>
       
       <div className="min-h-screen bg-background">
@@ -20,10 +22,9 @@ const Media = () => {
           <section className="py-20 bg-gradient-to-b from-primary to-primary-glow text-primary-foreground">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto text-center">
-                <h1 className="mb-6 animate-fade-in">Media & Learning Hub</h1>
+                <h1 className="mb-6 animate-fade-in">{t('media.hero.title')}</h1>
                 <p className="text-xl leading-relaxed animate-slide-up">
-                  Dive deep into college recruiting wisdom through podcasts, articles, 
-                  videos, and live speaking events designed to educate and inspire.
+                  {t('media.hero.subtitle')}
                 </p>
               </div>
             </div>

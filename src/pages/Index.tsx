@@ -6,16 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Users, BookOpen, Star, TrendingUp, Award, Target, Clock } from "lucide-react";
 import { useContent } from "@/contexts/ContentContext";
+import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-recruiting.jpg";
 
 const Index = () => {
   const { getFieldValue } = useContent();
+  const { t } = useTranslation();
 
   return (
     <>
       <Helmet>
-        <title>Thomas Anderson - College Recruiting Expert | Transform Your Athletic Future</title>
-        <meta name="description" content="Transform your college recruiting journey with Thomas Anderson's 31 years of proven expertise. Get personalized mentorship, strategic guidance, and the complete Game 12 system for recruiting success." />
+        <title>{t('home.hero.title')} | Thomas Anderson</title>
+        <meta name="description" content={t('home.hero.subtitle')} />
         <meta name="keywords" content="college recruiting, student athlete, scholarships, recruiting expert, college sports, athletic recruiting, Thomas Anderson" />
         <link rel="canonical" href="/" />
       </Helmet>
@@ -36,33 +38,33 @@ const Index = () => {
             <div className="container mx-auto px-6 relative z-10">
               <div className="max-w-4xl mx-auto text-center text-primary-foreground">
                 <h1 className="mb-6 animate-fade-in">
-                  {getFieldValue('home', 'hero-title')}
+                  {t('home.hero.title')}
                 </h1>
                 <p className="text-xl lg:text-2xl leading-relaxed mb-8 animate-slide-up">
-                  {getFieldValue('home', 'hero-subtitle')}
+                  {t('home.hero.subtitle')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-scale-in">
-                  <Button className="btn-gold text-lg px-8 py-4">Start Your Journey</Button>
-                  <Button className="btn-outline text-lg px-8 py-4">Watch Success Stories</Button>
+                  <Button className="btn-gold text-lg px-8 py-4">{t('btn.startJourney')}</Button>
+                  <Button className="btn-outline text-lg px-8 py-4">{t('btn.watchStories')}</Button>
                 </div>
                 
                 {/* Hero Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{getFieldValue('home', 'stats-experience')}</div>
-                    <div className="stat-label text-primary-foreground/80">Years Experience</div>
+                    <div className="stat-number text-accent">{t('home.stats.experience')}</div>
+                    <div className="stat-label text-primary-foreground/80">{t('home.stats.experienceLabel')}</div>
                   </div>
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{getFieldValue('home', 'stats-athletes')}</div>
-                    <div className="stat-label text-primary-foreground/80">Athletes Guided</div>
+                    <div className="stat-number text-accent">{t('home.stats.athletes')}</div>
+                    <div className="stat-label text-primary-foreground/80">{t('home.stats.athletesLabel')}</div>
                   </div>
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{getFieldValue('home', 'stats-success')}</div>
-                    <div className="stat-label text-primary-foreground/80">Success Rate</div>
+                    <div className="stat-number text-accent">{t('home.stats.success')}</div>
+                    <div className="stat-label text-primary-foreground/80">{t('home.stats.successLabel')}</div>
                   </div>
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{getFieldValue('home', 'stats-scholarships')}</div>
-                    <div className="stat-label text-primary-foreground/80">Scholarships Earned</div>
+                    <div className="stat-number text-accent">{t('home.stats.scholarships')}</div>
+                    <div className="stat-label text-primary-foreground/80">{t('home.stats.scholarshipsLabel')}</div>
                   </div>
                 </div>
               </div>
