@@ -6,18 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Users, BookOpen, Star, TrendingUp, Award, Target, Clock } from "lucide-react";
 import { useContent } from "@/contexts/ContentContext";
-import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-recruiting.jpg";
 
 const Index = () => {
   const { getFieldValue } = useContent();
-  const { t } = useTranslation();
 
   return (
     <>
       <Helmet>
-        <title>{t('home.hero.title')} | Thomas Anderson</title>
-        <meta name="description" content={t('home.hero.subtitle')} />
+        <title>Transform Your College Athletic Dreams Into Reality | Thomas Anderson</title>
+        <meta name="description" content="With 31 years of proven expertise, unlock the complete Game 12 system that has helped thousands of student-athletes secure college scholarships." />
         <meta name="keywords" content="college recruiting, student athlete, scholarships, recruiting expert, college sports, athletic recruiting, Thomas Anderson" />
         <link rel="canonical" href="/" />
       </Helmet>
@@ -38,14 +36,14 @@ const Index = () => {
             <div className="container mx-auto px-6 relative z-10">
               <div className="max-w-4xl mx-auto text-center text-primary-foreground">
                 <h1 className="mb-6 animate-fade-in">
-                  {t('home.hero.title')}
+                  Transform Your College Athletic Dreams Into Reality
                 </h1>
                 <p className="text-xl lg:text-2xl leading-relaxed mb-8 animate-slide-up">
-                  {t('home.hero.subtitle')}
+                  With 31 years of proven expertise, unlock the complete Game 12 system that has helped thousands of student-athletes secure college scholarships and achieve their academic goals.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-scale-in">
-                  <Button className="btn-gold text-lg px-8 py-4">{t('btn.startJourney')}</Button>
-                  <Button className="btn-outline text-lg px-8 py-4">{t('btn.watchStories')}</Button>
+                  <Button className="btn-gold text-lg px-8 py-4">Start Your Journey</Button>
+                  <Button className="btn-outline text-lg px-8 py-4">Watch Success Stories</Button>
                 </div>
                 
                 {/* Hero Stats */}
