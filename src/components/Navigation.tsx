@@ -20,21 +20,66 @@ const Navigation = () => {
   ];
 
   const translateToSpanish = () => {
-    const googleTranslateCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (googleTranslateCombo) {
-      googleTranslateCombo.value = 'es';
-      googleTranslateCombo.dispatchEvent(new Event('change'));
-      setCurrentLang('ES');
-    }
+    // Wait for Google Translate to load
+    setTimeout(() => {
+      const googleTranslateCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (googleTranslateCombo) {
+        googleTranslateCombo.value = 'es';
+        googleTranslateCombo.dispatchEvent(new Event('change'));
+        setCurrentLang('ES');
+      } else {
+        // If combo not found, try triggering Google Translate initialization
+        if (window.google && window.google.translate) {
+          window.google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,es',
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          }, 'google_translate_element');
+          
+          // Try again after initialization
+          setTimeout(() => {
+            const combo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+            if (combo) {
+              combo.value = 'es';
+              combo.dispatchEvent(new Event('change'));
+              setCurrentLang('ES');
+            }
+          }, 1000);
+        }
+      }
+    }, 500);
   };
 
   const translateToEnglish = () => {
-    const googleTranslateCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (googleTranslateCombo) {
-      googleTranslateCombo.value = 'en';
-      googleTranslateCombo.dispatchEvent(new Event('change'));
-      setCurrentLang('EN');
-    }
+    setTimeout(() => {
+      const googleTranslateCombo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (googleTranslateCombo) {
+        googleTranslateCombo.value = 'en';
+        googleTranslateCombo.dispatchEvent(new Event('change'));
+        setCurrentLang('EN');
+      } else {
+        // If combo not found, try triggering Google Translate initialization
+        if (window.google && window.google.translate) {
+          window.google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,es',
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          }, 'google_translate_element');
+          
+          // Try again after initialization
+          setTimeout(() => {
+            const combo = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+            if (combo) {
+              combo.value = 'en';
+              combo.dispatchEvent(new Event('change'));
+              setCurrentLang('EN');
+            }
+          }, 1000);
+        }
+      }
+    }, 500);
   };
 
   const isActive = (href: string) => {
