@@ -3,15 +3,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Mic, BookOpen, Video, Calendar } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const Media = () => {
-  const { t } = useTranslation();
   return (
     <>
       <Helmet>
-        <title>{t('media.hero.title')} | Thomas Anderson</title>
-        <meta name="description" content={t('media.hero.subtitle')} />
+        <title>Media & Learning Hub | Thomas Anderson</title>
+        <meta name="description" content="Dive deep into college recruiting wisdom through podcasts, articles, videos, and live speaking events." />
       </Helmet>
       
       <div className="min-h-screen bg-background">
@@ -22,9 +20,9 @@ const Media = () => {
           <section className="py-20 bg-gradient-to-b from-primary to-primary-glow text-primary-foreground">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto text-center">
-                <h1 className="mb-6 animate-fade-in">{t('media.hero.title')}</h1>
+                <h1 className="mb-6 animate-fade-in">Media & Learning Hub</h1>
                 <p className="text-xl leading-relaxed animate-slide-up">
-                  {t('media.hero.subtitle')}
+                  Dive deep into college recruiting wisdom through podcasts, articles, videos, and live speaking events designed to educate and inspire.
                 </p>
               </div>
             </div>

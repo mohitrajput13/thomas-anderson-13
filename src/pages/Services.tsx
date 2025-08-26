@@ -3,15 +3,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Users, Calendar, Trophy } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const Services = () => {
-  const { t } = useTranslation();
   return (
     <>
       <Helmet>
-        <title>{t('services.hero.title')} | Thomas Anderson</title>
-        <meta name="description" content={t('services.hero.subtitle')} />
+        <title>Personal Mentorship Program | Thomas Anderson</title>
+        <meta name="description" content="Exclusive one-on-one guidance designed for serious student-athletes ready to take their college recruiting to the next level." />
       </Helmet>
       
       <div className="min-h-screen bg-background">
@@ -22,13 +20,13 @@ const Services = () => {
           <section className="py-20 bg-gradient-to-b from-primary to-primary-glow text-primary-foreground">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto text-center">
-                <h1 className="mb-6 animate-fade-in">{t('services.hero.title')}</h1>
+                <h1 className="mb-6 animate-fade-in">Personal Mentorship Program</h1>
                 <p className="text-xl leading-relaxed animate-slide-up">
-                  {t('services.hero.subtitle')}
+                  Exclusive one-on-one guidance designed for serious student-athletes ready to take their college recruiting to the next level.
                 </p>
                 <div className="mt-8">
                   <span className="inline-block bg-accent text-accent-foreground px-4 py-2 rounded-full font-semibold">
-                    {t('services.hero.limited')}
+                    Limited Availability
                   </span>
                 </div>
               </div>

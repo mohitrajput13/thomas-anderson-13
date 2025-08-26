@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 
 const Footer = () => {
-  const { t } = useTranslation();
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -10,21 +8,21 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Quick Start */}
           <div>
-            <h3 className="font-semibold mb-4 text-accent">{t('footer.quickStart')}</h3>
+            <h3 className="font-semibold mb-4 text-accent">Quick Start</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/#quiz-section" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.quiz')}
+                  Quiz
                 </Link>
               </li>
               <li>
                 <Link to="/book" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.freeGuide')}
+                  Free Guide
                 </Link>
               </li>
               <li>
                 <Link to="/media" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.resources')}
+                  Resources
                 </Link>
               </li>
             </ul>
@@ -32,21 +30,21 @@ const Footer = () => {
 
           {/* Learn */}
           <div>
-            <h3 className="font-semibold mb-4 text-accent">{t('footer.learn')}</h3>
+            <h3 className="font-semibold mb-4 text-accent">Learn</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/media" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.podcast')}
+                  Podcast
                 </Link>
               </li>
               <li>
                 <Link to="/media" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.articles')}
+                  Articles
                 </Link>
               </li>
               <li>
                 <Link to="/media" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.videos')}
+                  Videos
                 </Link>
               </li>
             </ul>
@@ -54,16 +52,16 @@ const Footer = () => {
 
           {/* About */}
           <div>
-            <h3 className="font-semibold mb-4 text-accent">{t('footer.about')}</h3>
+            <h3 className="font-semibold mb-4 text-accent">About</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/about" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.thomasStory')}
+                  Thomas's Story
                 </Link>
               </li>
               <li>
                 <Link to="/#success-stories" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.successStories')}
+                  Success Stories
                 </Link>
               </li>
             </ul>
@@ -71,21 +69,21 @@ const Footer = () => {
 
           {/* Legal */}
           <div>
-            <h3 className="font-semibold mb-4 text-accent">{t('footer.legal')}</h3>
+            <h3 className="font-semibold mb-4 text-accent">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/contact" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.privacy')}
+                  Privacy
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.terms')}
+                  Terms
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">
-                  {t('footer.cookies')}
+                  Cookies
                 </Link>
               </li>
             </ul>
@@ -95,7 +93,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-primary-glow mt-8 pt-8 text-center">
           <div className="text-sm opacity-80">
-            {t('footer.copyright')}
+            Copyright © 2025
           </div>
         </div>
       </div>

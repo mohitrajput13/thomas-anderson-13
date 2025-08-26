@@ -1,15 +1,13 @@
 import { Helmet } from "react-helmet-async";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useTranslation } from "react-i18next";
 
 const About = () => {
-  const { t } = useTranslation();
   return (
     <>
       <Helmet>
-        <title>{t('about.hero.title')} | Thomas Anderson</title>
-        <meta name="description" content={t('about.hero.subtitle')} />
+        <title>The Man Behind the Mission | Thomas Anderson</title>
+        <meta name="description" content="For over three decades, Thomas Anderson has dedicated his life to transforming young athletes into college-bound champions." />
       </Helmet>
       
       <div className="min-h-screen bg-background">
@@ -20,9 +18,9 @@ const About = () => {
           <section className="py-20 bg-gradient-to-b from-primary to-primary-glow text-primary-foreground">
             <div className="container mx-auto px-6">
               <div className="max-w-4xl mx-auto text-center">
-                <h1 className="mb-6 animate-fade-in">{t('about.hero.title')}</h1>
+                <h1 className="mb-6 animate-fade-in">The Man Behind the Mission</h1>
                 <p className="text-xl leading-relaxed animate-slide-up">
-                  {t('about.hero.subtitle')}
+                  For over three decades, Thomas Anderson has dedicated his life to transforming young athletes into college-bound champions. His journey began in 1979 and continues to impact thousands of families nationwide.
                 </p>
               </div>
             </div>

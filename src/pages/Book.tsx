@@ -3,15 +3,13 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Star, ExternalLink, BookOpen, Users } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const Book = () => {
-  const { t } = useTranslation();
   return (
     <>
       <Helmet>
-        <title>{t('book.hero.title')} | Thomas Anderson</title>
-        <meta name="description" content={t('book.hero.subtitle')} />
+        <title>Dream Big, Play Hard | Thomas Anderson</title>
+        <meta name="description" content="The definitive guide to college recruiting success, packed with 31 years of proven strategies and the complete Game 12 system." />
       </Helmet>
       
       <div className="min-h-screen bg-background">
@@ -23,9 +21,9 @@ const Book = () => {
             <div className="container mx-auto px-6">
               <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
                 <div className="order-2 lg:order-1">
-                  <h1 className="mb-6 animate-fade-in">{t('book.hero.title')}</h1>
+                  <h1 className="mb-6 animate-fade-in">Dream Big, Play Hard</h1>
                   <p className="text-xl leading-relaxed mb-8 animate-slide-up">
-                    {t('book.hero.subtitle')}
+                    The definitive guide to college recruiting success, packed with 31 years of proven strategies, real-world insights, and the complete Game 12 system that has helped thousands of student-athletes achieve their dreams.
                   </p>
                   <div className="flex items-center gap-6 mb-8">
                     <div className="flex items-center gap-1">
@@ -33,13 +31,13 @@ const Book = () => {
                         <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                       ))}
                     </div>
-                    <span className="text-lg">{t('book.hero.rating')}</span>
+                    <span className="text-lg">4.9/5 Reader Rating</span>
                   </div>
                   <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex">
                     <Button className="btn-gold">
-                      {t('btn.getCopy')} <ExternalLink className="w-4 h-4 ml-2" />
+                      Get Your Copy <ExternalLink className="w-4 h-4 ml-2" />
                     </Button>
-                    <Button className="btn-outline">{t('btn.previewSample')}</Button>
+                    <Button className="btn-outline">Preview Sample</Button>
                   </div>
                 </div>
                 <div className="order-1 lg:order-2 text-center">

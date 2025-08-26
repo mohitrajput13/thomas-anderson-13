@@ -49,20 +49,20 @@ const Index = () => {
                 {/* Hero Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{t('home.stats.experience')}</div>
-                    <div className="stat-label text-primary-foreground/80">{t('home.stats.experienceLabel')}</div>
+                    <div className="stat-number text-accent">31+</div>
+                    <div className="stat-label text-primary-foreground/80">Years Experience</div>
                   </div>
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{t('home.stats.athletes')}</div>
-                    <div className="stat-label text-primary-foreground/80">{t('home.stats.athletesLabel')}</div>
+                    <div className="stat-number text-accent">5,000+</div>
+                    <div className="stat-label text-primary-foreground/80">Athletes Guided</div>
                   </div>
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{t('home.stats.success')}</div>
-                    <div className="stat-label text-primary-foreground/80">{t('home.stats.successLabel')}</div>
+                    <div className="stat-number text-accent">95%</div>
+                    <div className="stat-label text-primary-foreground/80">Success Rate</div>
                   </div>
                   <div className="stat-card bg-primary-foreground/10 backdrop-blur-sm">
-                    <div className="stat-number text-accent">{t('home.stats.scholarships')}</div>
-                    <div className="stat-label text-primary-foreground/80">{t('home.stats.scholarshipsLabel')}</div>
+                    <div className="stat-number text-accent">$50M+</div>
+                    <div className="stat-label text-primary-foreground/80">Scholarships Earned</div>
                   </div>
                 </div>
               </div>
